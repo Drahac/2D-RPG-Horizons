@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  contact_damage: 4
   waypoints:
   - {fileID: 0}
   - {fileID: 0}

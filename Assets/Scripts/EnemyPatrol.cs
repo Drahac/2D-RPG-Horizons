@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private int contact_damage;
 
     [SerializeField] private Transform[] waypoints;
 
@@ -39,6 +40,15 @@ public class EnemyPatrol : MonoBehaviour
         }else if(dir.x > 0.1f)
         {
             spriteRenderer.flipX = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            PlayerHealth playerHealth = collision.transform.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(contact_damage);
         }
     }
 }

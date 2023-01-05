@@ -9225,6 +9225,10 @@ PrefabInstance:
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1147447208754472011, guid: 99b15a565b4666949918aa44e4e09c0b, type: 3}
+      propertyPath: contact_damage
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4764114423423013990, guid: 99b15a565b4666949918aa44e4e09c0b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -9333,6 +9337,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5710202447021406335, guid: 5c55a9e7f630f404abca8db21d4e166f, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5710202447021406335, guid: 5c55a9e7f630f404abca8db21d4e166f, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
