@@ -11,39 +11,46 @@ public class MovePlayer : MonoBehaviour
     private bool isJumping = false;
     private bool isGrounded;
 
-    private Transform groudedLeft;
-    private Transform groudedRight;
+    private Transform groundedCheck;
+    private float groundCheckRadius = 0.2f;
+    [SerializeField] private LayerMask collisionLayer;
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+
+    private float horizontalMovement;
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
 
-        groudedLeft = GameObject.Find("GroundedLeft").transform;
-        groudedRight = GameObject.Find("GroundedRight").transform;
-    
+        groundedCheck = GameObject.Find("GroundedCheck").transform;
+        
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void FixedUpdate()
+    private void Update()
     {
-        isGrounded = Physics2D.OverlapArea(groudedLeft.position, groudedRight.position);
+        isGrounded = Physics2D.OverlapCircle(groundedCheck.position, groundCheckRadius, collisionLayer);
 
-        float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
 
         if (Input.GetButtonDown("Jump") & isGrounded)
         {
             isJumping = true;
         }
 
-        Move(horizontalMovement);
+        
         Flip(body.velocity.x);
 
         float characterVelocity = Mathf.Abs(body.velocity.x);
         animator.SetFloat("Speed", characterVelocity);
+    }
+
+    void FixedUpdate()
+    {
+        Move(horizontalMovement);
     }
 
     private void Move(float _horizontalMovement)
