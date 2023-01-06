@@ -8,12 +8,22 @@ public class LoadSpecificScene : MonoBehaviour
 
     [SerializeField] private string sceneName;
 
+    [SerializeField] private Animator fadeAnimator;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene(sceneName);
+            StartCoroutine(loadNextScene());
+            
         }
+    }
+
+    private IEnumerator loadNextScene()
+    {
+        fadeAnimator.SetTrigger("FadeIn");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneName);
     }
 
 }
