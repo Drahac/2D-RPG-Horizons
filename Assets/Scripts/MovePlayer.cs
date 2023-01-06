@@ -10,6 +10,7 @@ public class MovePlayer : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     private bool isJumping = false;
     private bool isGrounded;
+    private bool isClimbing;
 
     private Transform groundedCheck;
     private float groundCheckRadius = 0.2f;
@@ -19,6 +20,7 @@ public class MovePlayer : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private float horizontalMovement;
+    private float verticalMovement;
 
     void Start()
     {
@@ -35,6 +37,7 @@ public class MovePlayer : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundedCheck.position, groundCheckRadius, collisionLayer);
 
         horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        verticalMovement = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
         if (Input.GetButtonDown("Jump") & isGrounded)
         {
@@ -46,23 +49,34 @@ public class MovePlayer : MonoBehaviour
 
         float characterVelocity = Mathf.Abs(body.velocity.x);
         animator.SetFloat("Speed", characterVelocity);
+        animator.SetBool("isClimbing",isClimbing);
     }
 
     void FixedUpdate()
     {
-        Move(horizontalMovement);
+        Move(horizontalMovement,verticalMovement);
     }
 
-    private void Move(float _horizontalMovement)
+    private void Move(float _horizontalMovement, float _verticalMovement)
     {
-        Vector3 targetVelocity = new Vector2(_horizontalMovement, body.velocity.y);
-        body.velocity = Vector3.SmoothDamp(body.velocity, targetVelocity, ref velocity, .05f);
-
-        if (isJumping)
+        if (!isClimbing)
         {
-            body.AddForce(new Vector2(0f, jumpForce));
-            isJumping=false;
+            Vector3 targetVelocity = new Vector2(_horizontalMovement, body.velocity.y);
+            body.velocity = Vector3.SmoothDamp(body.velocity, targetVelocity, ref velocity, .05f);
+
+            if (isJumping)
+            {
+                body.AddForce(new Vector2(0f, jumpForce));
+                isJumping = false;
+            }
         }
+        else
+        {
+            Vector3 targetVelocity = new Vector2(0, _verticalMovement);
+            body.velocity = Vector3.SmoothDamp(body.velocity, targetVelocity, ref velocity, .05f);
+
+        }
+
     }
 
     private void Flip(float _velocity)
@@ -74,5 +88,15 @@ public class MovePlayer : MonoBehaviour
         }else if(_velocity>0.1f){
             spriteRenderer.flipX = false;
         }
+    }
+
+    public void SetIsClimbing(bool climb)
+    {
+        isClimbing = climb;
+    }
+
+    public bool GetIsClimbing()
+    {
+        return isClimbing;
     }
 }
