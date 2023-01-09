@@ -37,11 +37,42 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
-            isInvincible = true;
-            StartCoroutine(InvincibilityFlash());
-            StartCoroutine(HandleInvincibilityDelay());
-        } 
+
+            //vérifie rsi le joueur est vivant
+            if (currentHealth <= 0)
+            {
+                Die();
+                return;
+            }
+            else
+            {
+
+                isInvincible = true;
+                StartCoroutine(InvincibilityFlash());
+                StartCoroutine(HandleInvincibilityDelay());
+            }
+        }
     }
+
+    public void HealPlayer(int healing)
+    {
+        currentHealth += healing;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        healthBar.SetHealth(currentHealth);
+    }
+
+
+    private void Die()
+    {
+        //bloquer les mouvement
+        gameObject.GetComponent<MovePlayer>().enabled = false;
+        //animation de mort
+        gameObject.GetComponent<Animator>().SetTrigger("Death");
+        //empecher les interactions
+        gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+
+    }
+
 
     private IEnumerator InvincibilityFlash() {
         while (isInvincible)
