@@ -14,21 +14,33 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     private SpriteRenderer spriteRenderer;
 
+    public static PlayerHealth Instance;
+
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Debug.LogWarning("Il y a plus d'une instance de PlayerHealth dans la scène");
+            return;
+        }
+
+        Instance = this;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     void Start()
     {
-        currentHealth = maxHealth;
+        
         healthBar.SetMaxHealth(maxHealth);
+        currentHealth = maxHealth;
         healthBar.SetHealth(currentHealth);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ResetHealth()
     {
-        
+        currentHealth = CurrentSceneManager.Instance.GetStartSceneHealth();
+        healthBar.SetHealth(currentHealth);
     }
 
     public void TakeDamage(int damage)
@@ -71,6 +83,26 @@ public class PlayerHealth : MonoBehaviour
         //empecher les interactions
         gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
 
+        //GameOverMenu
+        GameOverManager.Instance.OnPlayerDeath();
+    }
+
+    public void Respawn()
+    {
+        //débloquer les mouvement
+        gameObject.GetComponent<MovePlayer>().enabled = true;
+        //quitter l'animation de mort
+        gameObject.GetComponent<Animator>().SetTrigger("Respawn");
+        //retrouver les interactions
+        gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        
+        ResetHealth();
+
+    }
+
+    public int GetHealth()
+    {
+        return currentHealth;
     }
 
 
