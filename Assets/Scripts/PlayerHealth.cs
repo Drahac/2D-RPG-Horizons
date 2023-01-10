@@ -81,7 +81,9 @@ public class PlayerHealth : MonoBehaviour
         //animation de mort
         gameObject.GetComponent<Animator>().SetTrigger("Death");
         //empecher les interactions
-        gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        Rigidbody2D body = gameObject.GetComponent<Rigidbody2D>();
+        body.isKinematic = true;
+        body.velocity = Vector3.zero;
 
         //GameOverMenu
         GameOverManager.Instance.OnPlayerDeath();
