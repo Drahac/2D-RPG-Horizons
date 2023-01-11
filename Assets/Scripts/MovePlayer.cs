@@ -22,7 +22,20 @@ public class MovePlayer : MonoBehaviour
     private float horizontalMovement;
     private float verticalMovement;
 
-    void Start()
+    public static MovePlayer Instance;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogWarning("Il y a plus d'une instance de MovePlayer dans la scène");
+            return;
+        }
+
+        Instance = this;
+    }
+
+        void Start()
     {
         body = GetComponent<Rigidbody2D>();
 
