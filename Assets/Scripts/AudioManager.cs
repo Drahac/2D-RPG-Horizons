@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,8 +10,22 @@ public class AudioManager : MonoBehaviour
     private AudioSource audioSource;
 
     private int musicIndex =0;
-    
-    // Start is called before the first frame update
+    [SerializeField] private AudioMixerGroup soundEffectMixer;
+
+
+    public static AudioManager Instance;
+
+    private void Awake()
+    {
+        if(Instance != null)
+        {
+            Debug.LogWarning("Il y a plus d'une Instance d' AudioManager dans la scène");
+            return;
+        }
+
+        Instance = this;
+    }
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -32,5 +47,21 @@ public class AudioManager : MonoBehaviour
         musicIndex = (musicIndex+1)%playList.Length;
         audioSource.clip=playList[musicIndex];
         audioSource.Play();
+    }
+
+
+    public AudioSource PlayClipAt(AudioClip clip, Vector3 pos)
+    {
+        GameObject go = new GameObject();
+        go.transform.position = pos;
+
+        AudioSource audioSource = go.AddComponent<AudioSource>();
+
+        audioSource.clip = clip;
+        audioSource.outputAudioMixerGroup = soundEffectMixer;
+        audioSource.Play();
+        Destroy(go, clip.length);
+
+        return audioSource;
     }
 }

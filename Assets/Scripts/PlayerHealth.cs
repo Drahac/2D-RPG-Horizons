@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField] private AudioClip clip;
+
     public static PlayerHealth Instance;
 
     private void Awake()
@@ -47,6 +49,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!isInvincible)
         {
+            AudioManager.Instance.PlayClipAt(clip, transform.position);
+
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
 
