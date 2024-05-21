@@ -5,18 +5,11 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
 
-    private Transform playerSpawn;
-
-     void Awake()
-    {
-        playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            playerSpawn.position = transform.position;
+            CurrentSceneManager.Instance.respawnPoint = transform.position;
             GetComponent<BoxCollider2D>().enabled = false;
         }
     }

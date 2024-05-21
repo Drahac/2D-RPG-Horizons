@@ -47,10 +47,11 @@ public class MovePlayer : MonoBehaviour
 
     private void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(groundedCheck.position, groundCheckRadius, collisionLayer);
 
         horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         verticalMovement = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+
+        isGrounded = Physics2D.OverlapCircle(groundedCheck.position, groundCheckRadius, collisionLayer);//test perso
 
         if (Input.GetButtonDown("Jump") && isGrounded && !isClimbing)
         {
@@ -63,11 +64,16 @@ public class MovePlayer : MonoBehaviour
         float characterVelocity = Mathf.Abs(body.velocity.x);
         animator.SetFloat("Speed", characterVelocity);
         animator.SetBool("isClimbing",isClimbing);
+
+        Move(horizontalMovement, verticalMovement);// test perso
+
     }
 
     void FixedUpdate()
     {
-        Move(horizontalMovement,verticalMovement);
+        /*isGrounded = Physics2D.OverlapCircle(groundedCheck.position, groundCheckRadius, collisionLayer);
+
+        Move(horizontalMovement,verticalMovement);*/
     }
 
     private void Move(float _horizontalMovement, float _verticalMovement)
@@ -111,5 +117,10 @@ public class MovePlayer : MonoBehaviour
     public bool GetIsClimbing()
     {
         return isClimbing;
+    }
+
+    public void ChangeSpeed(int speedBonus)
+    {
+        moveSpeed+= speedBonus;
     }
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CurrentSceneManager : MonoBehaviour
 {
-    [SerializeField] private bool isPlayerPresentByDefault;
-
     private int startSceneHealth;
+    [SerializeField] private int LevelToUnlock;
+
+    public Vector3 respawnPoint;
 
     public static CurrentSceneManager Instance;
 
@@ -19,6 +20,8 @@ public class CurrentSceneManager : MonoBehaviour
         }
 
         Instance = this;
+
+        respawnPoint = GameObject.FindGameObjectWithTag("Player").transform.position;
     }
 
     private void Start()
@@ -26,13 +29,13 @@ public class CurrentSceneManager : MonoBehaviour
         startSceneHealth = PlayerHealth.Instance.GetHealth();
     }
 
-    public bool GetIsPlayerPresentByDefault()
-    {
-        return isPlayerPresentByDefault;
-    }
-
     public int GetStartSceneHealth()
     {
         return startSceneHealth;
+    }
+
+    public int GetLevelToUnlock()
+    {
+        return LevelToUnlock;
     }
 }

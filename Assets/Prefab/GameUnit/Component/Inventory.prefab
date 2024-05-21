@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6418215032553091038
+--- !u!1 &2189255552752567858
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6418215032553091037}
-  - component: {fileID: 8101087670725744042}
+  - component: {fileID: 2189255552752567856}
+  - component: {fileID: 2189255552752567857}
   m_Layer: 0
-  m_Name: PlayerSpawn
-  m_TagString: PlayerSpawn
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6418215032553091037
+--- !u!4 &2189255552752567856
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6418215032553091038}
+  m_GameObject: {fileID: 2189255552752567858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.38, y: -1.36, z: 0}
+  m_LocalPosition: {x: 0.738875, y: -1.4922764, z: -0.5736451}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8101087670725744042
+--- !u!114 &2189255552752567857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6418215032553091038}
+  m_GameObject: {fileID: 2189255552752567858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb2ae5a75e9c98444841e900a54d48d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 346f542763b04a24789dd7524cdafbca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinsCountText: {fileID: 0}
+  content: []
+  itemImageUI: {fileID: 0}
+  emptyItem: {fileID: 21300000, guid: 53894c931b7d68a459fa36ac3ef7a62b, type: 3}
+  itemTextUI: {fileID: 0}
+  playerEffect: {fileID: 0}

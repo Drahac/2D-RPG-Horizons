@@ -21,6 +21,7 @@ public class LoadSpecificScene : MonoBehaviour
 
     private IEnumerator loadNextScene()
     {
+        LoadandSaveData.instance.SaveData();
         fadeAnimator.SetTrigger("FadeIn");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneName);
