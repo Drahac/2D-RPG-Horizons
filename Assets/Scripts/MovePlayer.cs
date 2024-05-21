@@ -33,47 +33,39 @@ public class MovePlayer : MonoBehaviour
         }
 
         Instance = this;
-    }
 
-        void Start()
-    {
         body = GetComponent<Rigidbody2D>();
 
         groundedCheck = GameObject.Find("GroundedCheck").transform;
-        
+
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-
-        horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        verticalMovement = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-
-        isGrounded = Physics2D.OverlapCircle(groundedCheck.position, groundCheckRadius, collisionLayer);//test perso
+        isGrounded = Physics2D.OverlapCircle(groundedCheck.position, groundCheckRadius, collisionLayer);
 
         if (Input.GetButtonDown("Jump") && isGrounded && !isClimbing)
         {
             isJumping = true;
         }
-
-        
-        Flip(body.velocity.x);
-
-        float characterVelocity = Mathf.Abs(body.velocity.x);
-        animator.SetFloat("Speed", characterVelocity);
-        animator.SetBool("isClimbing",isClimbing);
-
-        Move(horizontalMovement, verticalMovement);// test perso
-
     }
 
     void FixedUpdate()
     {
-        /*isGrounded = Physics2D.OverlapCircle(groundedCheck.position, groundCheckRadius, collisionLayer);
 
-        Move(horizontalMovement,verticalMovement);*/
+        horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        verticalMovement = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+
+
+        Flip(body.velocity.x);
+
+        float characterVelocity = Mathf.Abs(body.velocity.x);
+        animator.SetFloat("Speed", characterVelocity);
+        animator.SetBool("isClimbing", isClimbing);
+
+        Move(horizontalMovement,verticalMovement);
     }
 
     private void Move(float _horizontalMovement, float _verticalMovement)
