@@ -14,6 +14,8 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> Sentences;
 
+    private bool isOpen = false;
+
     private void Awake()
     {
         if (Instance != null)
@@ -26,9 +28,18 @@ public class DialogueManager : MonoBehaviour
         Sentences = new Queue<string>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && isOpen)
+        {
+            EndDialogue();
+        }
+    }
+
     public void StartDialogue(Dialogue new_dialogue)
     {
         animator.SetBool("IsOpen", true);
+        isOpen = true;
 
         npc_name.text = new_dialogue.GetNpcName();
 
@@ -71,5 +82,18 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+        StartCoroutine(Closing());
+    }
+
+    private IEnumerator Closing()
+    {
+        yield return new WaitForSeconds(1f);
+        isOpen = false;
+        yield return null;
+    }
+
+    public bool IsOpen()
+    {
+        return isOpen;
     }
 }

@@ -19,7 +19,11 @@ public class PauseMenu : MonoBehaviour
             }
             else
             {
-                Pause();
+                if (!DialogueManager.Instance.IsOpen())
+                {
+                    Pause();
+                }
+                
             }
         }
     }

@@ -8,6 +8,8 @@ public class Chest : MonoBehaviour
 
     private Animator animator;
 
+    [SerializeField] int CoinGain;
+
     [SerializeField] AudioClip sound;
     void Awake()
     {
@@ -34,6 +36,7 @@ public class Chest : MonoBehaviour
             animator.SetTrigger("OpenChest");
             isOpen = true;
             AudioManager.Instance.PlayClipAt(sound, transform.position);
+            Inventory.Instance.AddCoins(CoinGain);
         }
     }
 }
