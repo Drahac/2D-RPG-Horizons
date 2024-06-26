@@ -19,3 +19,4 @@ MonoBehaviour:
   hpBonus: 0
   SpeedBonus: 250
   duration: 5
+  cost: 5

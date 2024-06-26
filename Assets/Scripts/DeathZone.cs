@@ -22,6 +22,7 @@ public class DeathZone : MonoBehaviour
     private IEnumerator RespawnPlayer(Collider2D collision)
     {
         fadeAnimator.SetTrigger("FadeIn");
+        PlayerHealth.Instance.TakeDamage(2);
         yield return new WaitForSeconds(1f);
         collision.transform.position = CurrentSceneManager.Instance.respawnPoint;
 

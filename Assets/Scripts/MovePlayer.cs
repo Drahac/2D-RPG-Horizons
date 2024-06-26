@@ -111,8 +111,23 @@ public class MovePlayer : MonoBehaviour
         return isClimbing;
     }
 
-    public void ChangeSpeed(int speedBonus)
+    public void ChangeSpeed(float speedBonus)
     {
         moveSpeed+= speedBonus;
+    }
+
+    public void ChangeJumpForce(float jumpBonus)
+    {
+        jumpForce += jumpBonus;
+    }
+
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+
+    public float GetJumpForce()
+    {
+        return jumpForce;
     }
 }

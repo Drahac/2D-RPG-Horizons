@@ -108,7 +108,7 @@ public class Inventory : MonoBehaviour
         UpdateInventoryUI();
     }
 
-    private void UpdateInventoryUI()
+    public void UpdateInventoryUI()
     {
         if (content.Count == 0)
         {

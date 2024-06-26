@@ -14,4 +14,6 @@ public class Item : ScriptableObject
     public int SpeedBonus;
     public float duration;
 
+    public int cost;
+
 }

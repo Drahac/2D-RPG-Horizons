@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 8332372313007126281}
   - component: {fileID: 3660215966644036150}
   - component: {fileID: 6249596408571946219}
+  - component: {fileID: 1187208132517387402}
   m_Layer: 0
   m_Name: VisualCheckpoint
   m_TagString: Untagged
@@ -151,5 +152,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab546e46d85ef3f41b8abae893a5beff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1187208132517387402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498820854615990374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5985f9ff5b617d4d9e46bc010e62af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

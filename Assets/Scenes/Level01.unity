@@ -32457,23 +32457,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8332372313007126281, guid: ef03c9883ba8e5f4abf4365282854e22, type: 3}
   m_PrefabInstance: {fileID: 1551606873}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1551606875 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5498820854615990374, guid: ef03c9883ba8e5f4abf4365282854e22, type: 3}
-  m_PrefabInstance: {fileID: 1551606873}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1551606876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551606875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5985f9ff5b617d4d9e46bc010e62af3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1558150870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6499270080857591788, guid: b37960b01a665d3439c3f109619144ce, type: 3}
@@ -32584,23 +32567,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef03c9883ba8e5f4abf4365282854e22, type: 3}
---- !u!1 &1777103833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5498820854615990374, guid: ef03c9883ba8e5f4abf4365282854e22, type: 3}
-  m_PrefabInstance: {fileID: 1702652129}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1777103834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777103833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5985f9ff5b617d4d9e46bc010e62af3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1777103837 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8332372313007126281, guid: ef03c9883ba8e5f4abf4365282854e22, type: 3}
@@ -33334,6 +33300,15 @@ PrefabInstance:
     - target: {fileID: 6705693624033372818, guid: 1f71aae3d0a283f4ca617d9c4bbf70ec, type: 3}
       propertyPath: m_Name
       value: PNJ01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705693624033372820, guid: 1f71aae3d0a283f4ca617d9c4bbf70ec, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: "Qui \xEAtes vous? Bon peu importe. j'ai besoin de votre aide."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705693624033372820, guid: 1f71aae3d0a283f4ca617d9c4bbf70ec, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: "Ma fille a disparu dans cette r\xE9gion. Il faut que je la retrouve
+        au plus vite."
       objectReference: {fileID: 0}
     - target: {fileID: 6705693624033372821, guid: 1f71aae3d0a283f4ca617d9c4bbf70ec, type: 3}
       propertyPath: m_RootOrder
